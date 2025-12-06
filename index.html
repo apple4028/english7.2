@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高中二年級必備英文單字</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght400;500;700&family=Roboto:wght400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+        }
+        .table-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .table-container::-webkit-scrollbar-thumb {
+            background: #aaa;
+            border-radius: 4px;
+        }
+        .tts-loading {
+            background-color: #fef3c7; /* yellow-100 */
+            color: #d97706; /* yellow-700 */
+        }
+        .tts-ready {
+            background-color: #d1fae5; /* green-100 */
+            color: #059669; /* green-700 */
+        }
+        .tts-error {
+            background-color: #fee2e2; /* red-100 */
+            color: #dc2626; /* red-600 */
+        }
+        .speaker-btn {
+            transition: all 0.15s;
+        }
+        .speaker-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none; /* 禁用點擊 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen py-10 px-4 sm:px-8">
+
+    <div class="max-w-7xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden">
+        
+        <!-- Header Section -->
+        <div class="text-center py-8 px-4 border-b border-gray-100">
+            <h1 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-3 tracking-wide">
+                高中二年級必備英文單字
+            </h1>
+            <!-- TTS Status Indicator -->
+            <div id="tts-status" class="tts-loading text-sm font-medium py-1.5 px-3 rounded-full inline-flex items-center gap-2">
+                <i class="fas fa-spinner fa-spin"></i> 語音引擎載入中... 請稍候 (若無法啟動，請檢查裝置的 TTS 設定)
+            </div>
+            <p class="text-gray-500 text-sm sm:text-base flex items-center justify-center gap-2 mt-2">
+                點擊 <i class="fas fa-volume-up text-blue-500"></i> 按鈕即可聆聽發音。
+            </p>
+        </div>
+
+        <!-- Table Section -->
+        <div class="table-container overflow-x-auto">
+            <table class="w-full text-left border-collapse min-w-[1000px]">
+                <thead>
+                    <tr class="bg-[#2d89ef] text-white">
+                        <th class="py-4 px-6 font-semibold text-lg w-1/12">單字</th>
+                        <th class="py-4 px-6 font-semibold text-lg w-1/12">詞性</th>
+                        <th class="py-4 px-6 font-semibold text-lg w-1/12">音節</th>
+                        <th class="py-4 px-6 font-semibold text-lg w-1/12">KK音標</th>
+                        <th class="py-4 px-6 font-semibold text-lg w-2/12">中文意思</th>
+                        <th class="py-4 px-6 font-semibold text-lg w-5/12">例句</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    
+                    <!-- Row 1: theory -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">theory</span>
+                                <button onclick="playAudio('theory')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">n. [C, U]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">the-o-ry</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[`θiərɪ]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">學說；理論</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-theory" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Darwin’s <span class="font-semibold text-gray-800">theory</span> of evolution is one of the most important sets of ideas in the history of science.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-theory').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 2: psychology -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">psychology</span>
+                                <button onclick="playAudio('psychology')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">n. [U]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">psy-chol-o-gy</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[saɪ`kɑlədʒɪ]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">心理學</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-psychology" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Wes Craven majored in <span class="font-semibold text-gray-800">psychology</span>, which taught him a lot about the human mind and thus helped him become a successful horror film director.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-psychology').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 3: demonstrate -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">demonstrate</span>
+                                <button onclick="playAudio('demonstrate')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vt.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">dem-on-strate</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[`dɛmənˏstret]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">表達</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-demonstrate" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Luke has <span class="font-semibold text-gray-800">demonstrated</span> much excitement and interest in his new job.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-demonstrate').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 4: interpret -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">interpret</span>
+                                <button onclick="playAudio('interpret')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vt.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">in-ter-pret</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[ɪn`tɝprɪt]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">理解；詮釋</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-interpret" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    One can often <span class="font-semibold text-gray-800">interpret</span> what a person is saying in a different language simply by observing his or her body language.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-interpret').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 5: stiff -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">stiff</span>
+                                <button onclick="playAudio('stiff')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">adj.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">stiff</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[stɪf]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">僵硬的</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-stiff" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    After a long, hard day in the mines, the miners’ arms were <span class="font-semibold text-gray-800">stiff</span> and sore from all the digging.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-stiff').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 6: scratch -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">scratch</span>
+                                <button onclick="playAudio('scratch')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vt.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">scratch</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[skrætʃ]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">搔抓</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-scratch" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    According to the article, it’s better not to <span class="font-semibold text-gray-800">scratch</span> an itchy mosquito bite because that just makes it worse.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-scratch').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 7: exhibit -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">exhibit</span>
+                                <button onclick="playAudio('exhibit')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vt.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">ex-hib-it</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[ɪg`zɪbɪt]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">表現；表露</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-exhibit" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    The bull <span class="font-semibold text-gray-800">exhibited</span> its dislike for the stranger by angrily scratching the ground and pointing its large, sharp horns at her.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-exhibit').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 8: gesture -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">gesture</span>
+                                <button onclick="playAudio('gesture')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">n. [C]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">ges-ture</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[`dʒɛstʃɚ]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">手勢；姿勢</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-gesture" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    The traffic officer made a <span class="font-semibold text-gray-800">gesture</span> at the driver to show that she could now safely turn right.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-gesture').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 9: moreover -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">moreover</span>
+                                <button onclick="playAudio('moreover')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">adv.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">more-o-ver</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[mor`ovɚ]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">此外</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-moreover" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    The Danube is the second longest river in Europe. <span class="font-semibold text-gray-800">Moreover</span>, it’s the river that flows through the most countries in the world.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-moreover').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 10: conscious -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">conscious</span>
+                                <button onclick="playAudio('conscious')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">adj.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">con-scious</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[`kɑnʃəs]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">意識到；注意到</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-conscious" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    When Jim woke up after the accident, he slowly became <span class="font-semibold text-gray-800">conscious</span> of the machine beeping next to his hospital bed.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-conscious').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 11: observe -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">observe</span>
+                                <button onclick="playAudio('observe')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vt.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">ob-serve</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[əb`zɝv]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">觀察</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-observe" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    The class closely <span class="font-semibold text-gray-800">observed</span> their yoga teacher’s graceful movements so that they could copy her.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-observe').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 12: reverse -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">reverse</span>
+                                <button onclick="playAudio('reverse')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">n. sing.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">re-verse</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[rɪ`vɝs]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">相反的情況或事物</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-reverse" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Some say Leila is a liar, but quite the <span class="font-semibold text-gray-800">reverse</span> is true. She is one of the most honest people I have ever known.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-reverse').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 13: significant -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">significant</span>
+                                <button onclick="playAudio('significant')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">adj.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">sig-nif-i-cant</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[sɪg`nɪfəkənt]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">重要的；顯著的</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-significant" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    The researchers couldn’t find any <span class="font-semibold text-gray-800">significant</span> evidence to support the theory.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-significant').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 14: circumstance -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">circumstance</span>
+                                <button onclick="playAudio('circumstance')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">n. [C]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">cir-cum-stance</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[`sɝkəmˏstæns]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">條件；狀況</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-circumstance" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Under no <span class="font-semibold text-gray-800">circumstances</span> can visitors to the museum touch or remove any artworks from the exhibition.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-circumstance').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 15: initially -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">initially</span>
+                                <button onclick="playAudio('initially')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">adv.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">in-i-tial-ly</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[ɪ`nɪʃəlɪ]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">起初</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-initially" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    <span class="font-semibold text-gray-800">Initially</span>, the bruises on Arthur’s leg were deep purple. Then, as they healed, they slowly turned brown.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-initially').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 16: glance -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">glance</span>
+                                <button onclick="playAudio('glance')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vi.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">glance</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[glæns]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">匆匆一瞥</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-glance" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Although Arnold didn’t want his date to know he was bored, he still <span class="font-semibold text-gray-800">glanced</span> at the clock now and then.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-glance').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 17: automatically -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">automatically</span>
+                                <button onclick="playAudio('automatically')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">adv.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">au-to-mat-i-cal-ly</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[ˏɔtə`mætɪkḷɪ]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">無意識地；不假思索地</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-automatically" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Close observation has shown that we <span class="font-semibold text-gray-800">automatically</span> raise our eyebrows more when we speak to people we are attracted to.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-automatically').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 18: track -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">track</span>
+                                <button onclick="playAudio('track')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vt.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">track</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[træk]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">追蹤</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-track" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    With this app, one can <span class="font-semibold text-gray-800">track</span> friends’ movements and spot their locations at any time.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-track').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 19: adore -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">adore</span>
+                                <button onclick="playAudio('adore')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vt.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">a-dore</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[ ə`dɔr]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">愛慕；熱愛</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-adore" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Angie <span class="font-semibold text-gray-800">adores</span> the man who saved her cat and believes him to be a hero.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-adore').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 20: affection -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">affection</span>
+                                <button onclick="playAudio('affection')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">n. [U, sing.]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">af-fec-tion</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[ə`fɛkʃən]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">喜愛</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-affection" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Even after being married for 40 years, the couple still showed a lot of <span class="font-semibold text-gray-800">affection</span> to each other.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-affection').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 21: interact -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">interact</span>
+                                <button onclick="playAudio('interact')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">vi.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">in-ter-act</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[ˏɪntɚ`ækt]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">互動；交流</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-interact" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Scientists grouped children with different mother tongues together to see how they would <span class="font-semibold text-gray-800">interact</span> with one another.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-interact').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 22: meaningful -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150 bg-gray-50/30">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">meaningful</span>
+                                <button onclick="playAudio('meaningful')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">adj.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">mean-ing-ful</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[`minɪŋfəl]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">有意義的；重要的</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-meaningful" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    All the employees had prepared a lot for the meeting, so they had a very <span class="font-semibold text-gray-800">meaningful</span> discussion and came up with some great ideas.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-meaningful').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- Row 23: fellow -->
+                    <tr class="hover:bg-blue-50 transition-colors duration-150">
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <span class="text-xl font-bold text-[#2d89ef]">fellow</span>
+                                <button onclick="playAudio('fellow')" class="speaker-btn w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽單字發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="inline-block px-2 py-1 bg-gray-100 text-gray-600 rounded text-sm font-medium">adj.</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-[#e69138] font-medium text-lg">fel-low</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-500 font-sans">[`fɛlo]</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <span class="text-gray-800 font-medium text-lg">同伴的；同事的</span>
+                        </td>
+                        <td class="py-5 px-6">
+                            <div class="flex items-center gap-3">
+                                <p id="sentence-fellow" class="text-gray-600 italic leading-relaxed flex-grow">
+                                    Don and his <span class="font-semibold text-gray-800">fellow</span> workers usually spend their lunch break eating and chatting together.
+                                </p>
+                                <button onclick="playAudio(document.getElementById('sentence-fellow').innerText.trim())" class="speaker-btn flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-full bg-blue-100 text-blue-600 hover:bg-blue-200 hover:scale-110 transition-all focus:outline-none" title="聆聽例句發音" disabled>
+                                    <i class="fas fa-volume-up text-sm"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Footer / Pagination Mockup -->
+        <div class="px-6 py-4 bg-gray-50 border-t border-gray-200 flex justify-between items-center text-sm text-gray-500">
+            <span>顯示第 1 至 23 筆，共 23 筆</span>
+            <div class="flex gap-2">
+                <button class="px-3 py-1 border rounded hover:bg-gray-100 disabled:opacity-50">上一頁</button>
+                <button class="px-3 py-1 border rounded bg-[#2d89ef] text-white hover:bg-blue-600">1</button>
+                <button class="px-3 py-1 border rounded hover:bg-gray-100 disabled:opacity-50" disabled>2</button>
+                <button class="px-3 py-1 border rounded hover:bg-gray-100 disabled:opacity-50" disabled>3</button>
+                <button class="px-3 py-1 border rounded hover:bg-gray-100 disabled:opacity-50">下一頁</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 
+        JavaScript 函式：最終修復版 TTS 語音合成邏輯 (Text-to-Speech)
+        - 針對 Android 裝置 TTS 載入延遲的加強處理。
+        - 增加了錯誤處理和用戶可見的狀態訊息。
+    -->
+    <script>
+        const statusElement = document.getElementById('tts-status');
+        const synth = window.speechSynthesis;
+        let englishVoice = null;
+        let ttsReady = false;
+        let voiceCheckInterval = null;
+
+        // 函式：啟用/禁用所有發音按鈕
+        function toggleButtons(enabled) {
+            document.querySelectorAll('.speaker-btn').forEach(button => {
+                button.disabled = !enabled;
+                if(enabled) {
+                    button.classList.remove('pointer-events-none');
+                } else {
+                    button.classList.add('pointer-events-none');
+                }
+            });
+        }
+
+        // 函式：初始化 TTS 引擎並選擇語音 (持續檢查)
+        function initTTS() {
+            // 1. 檢查瀏覽器是否支援
+            if (!('speechSynthesis' in window)) {
+                statusElement.className = 'tts-error text-sm font-medium py-1.5 px-3 rounded-full inline-flex items-center gap-2';
+                statusElement.innerHTML = '<i class="fas fa-exclamation-triangle"></i> 瀏覽器不支援發音功能。';
+                toggleButtons(false);
+                return;
+            }
+
+            // 2. 嘗試獲取語音列表
+            const voices = synth.getVoices();
+            
+            if (voices.length > 0) {
+                // 找到語音，清除檢查間隔
+                if (voiceCheckInterval) {
+                    clearInterval(voiceCheckInterval);
+                }
+
+                // 嘗試找到一個英文 (en-US 或 en-GB) 語音
+                englishVoice = voices.find(voice => 
+                    voice.lang.startsWith('en-') && 
+                    (voice.lang.includes('US') || voice.lang.includes('GB'))
+                ) || voices.find(voice => voice.lang.startsWith('en-')); // 退回到任何英文語音
+
+                ttsReady = true;
+                statusElement.className = 'tts-ready text-sm font-medium py-1.5 px-3 rounded-full inline-flex items-center gap-2';
+                statusElement.innerHTML = '<i class="fas fa-check-circle"></i> 語音合成引擎已準備就緒';
+                toggleButtons(true);
+
+            } else if (!voiceCheckInterval) {
+                // 語音尚未載入，開始持續檢查 (Android 常見情況)
+                console.log('語音清單為空，開始持續檢查...');
+                voiceCheckInterval = setInterval(initTTS, 500);
+            }
+        }
+
+        // 3. 監聽語音清單變更事件 (優先處理)
+        if ('speechSynthesis' in window) {
+            synth.onvoiceschanged = function() {
+                if (!ttsReady) { // 避免重複執行
+                    initTTS();
+                }
+            };
+        }
+        
+        // 4. 立即嘗試初始化 (處理語音瞬間載入的瀏覽器)
+        initTTS();
+        
+        // 函式：播放音訊
+        function playAudio(text) {
+            if (!ttsReady || !('speechSynthesis' in window)) {
+                console.error('TTS 引擎尚未準備好或不支援發音功能。');
+                return;
+            }
+
+            // 1. 停止任何當前正在播放的語音
+            synth.cancel();
+
+            // 2. 建立新的語音物件
+            const utterance = new SpeechSynthesisUtterance(text);
+            
+            // 3. 設定語音和語言
+            if (englishVoice) {
+                utterance.voice = englishVoice;
+            }
+            // 即使沒找到特定語音，也要確保語言設定是英文
+            utterance.lang = 'en-US'; 
+            utterance.rate = 0.95; // 語速微調，確保清晰度
+
+            // 4. 新增錯誤處理
+            utterance.onerror = function(event) {
+                console.error('TTS 播放錯誤:', event);
+                statusElement.className = 'tts-error text-sm font-medium py-1.5 px-3 rounded-full inline-flex items-center gap-2';
+                statusElement.innerHTML = `<i class="fas fa-exclamation-triangle"></i> 發音失敗：${event.error} (請檢查裝置的 Google TTS 語音包是否安裝)`;
+            };
+
+            // 5. 播放 (此操作在點擊事件中，應滿足 user gesture 需求)
+            synth.speak(utterance);
+        }
+    </script>
+</body>
+</html>
